@@ -1,0 +1,3 @@
+<template>
+  Monster Fights
+</template>
