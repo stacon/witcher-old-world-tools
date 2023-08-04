@@ -1,0 +1,297 @@
+{
+  "cards": {
+    "basic": [
+      {
+        "id": 1,
+        "charge": {
+          "type": "TRASH",
+          "description": "The Player trashes any 1 card from their hand (empty hand: from the top if their deck)."
+        },
+        "bite": {
+          "type": "DAMAGE",
+          "damage": 3,
+          "description": "The Player Takes 3 Damage"
+        }
+      },
+      {
+        "id": 2,
+        "charge": {
+          "type": "MOD-DISCARD",
+          "description": "The Player discards any %%x%% cards from their hand (empty hand: from the top if their deck). according to the Monster's level.",
+          "level-modifier": {
+            "1": 1,
+            "2": 2,
+            "3": 3
+          }
+        },
+        "bite": {
+          "type": "MOD-DAMAGE",
+          "level-modifier": {
+            "1": 3,
+            "2": 4,
+            "3": 5
+          },
+          "description": "The Player takes %%x%% Damage."
+        }
+      },
+      {
+        "id": 3,
+        "charge": {
+          "type": "TRASH",
+          "description": "The Player trashes any 1 card from their hand (empty hand: from the top if their deck)."
+        },
+        "bite": {
+          "type": "DAMAGE",
+          "description": "The Player takes Damage equal to their Combat level."
+        }
+      },
+      {
+        "id": 4,
+        "charge": {
+          "type": "MOD-DISCARD",
+          "description": "The Player discards any %%x%% cards from their hand (empty hand: from the top if their deck). according to the Monster's level.",
+          "level-modifier": {
+            "1": 1,
+            "2": 2,
+            "3": 3
+          }
+        },
+        "bite": {
+          "type": "DAMAGE",
+          "damage": 4,
+          "description": "The Player takes 4 Damage."
+        }
+      },
+      {
+        "id": 5,
+        "charge": {
+          "type": "DAMAGE",
+          "damage": 5,
+          "description": "The Player takes 5 Damage."
+        },
+        "bite": {
+          "type": "DAMAGE",
+          "damage": 2,
+          "description": "The Player takes 2 Damage."
+        }
+      },
+      {
+        "id": 6,
+        "charge": {
+          "type": "MOD-DISCARD",
+          "description": "The Player discards any %%x%% cards from their hand (empty hand: from the top if their deck).",
+          "level-modifier": {
+            "1": 1,
+            "2": 2,
+            "3": 3
+          }
+        },
+        "bite": {
+          "type": "DAMAGE",
+          "damage": 4,
+          "description": "The Player takes 4 Damage."
+        }
+      },
+      {
+        "id": 7,
+        "charge": {
+          "type": "DAMAGE",
+          "damage": 3,
+          "description": "The Player takes 3 Damage."
+        },
+        "bite": {
+          "type": "DAMAGE",
+          "damage": 5,
+          "description": "The Player takes 5 Damage."
+        }
+      },
+      {
+        "id": 8,
+        "charge": {
+          "type": "TRASH",
+          "description": "The Player trashes any 1 card from their hand (empty hand: from the top if their deck)."
+        },
+        "bite": {
+          "type": "DAMAGE",
+          "damage": 2,
+          "description": "The Player takes 2 Damage."
+        }
+      },
+      {
+        "id": 9,
+        "charge": {
+          "type": "DAMAGE",
+          "damage": 4,
+          "description": "The Player takes 4 Damage."
+        },
+        "bite": {
+          "type": "DAMAGE",
+          "description": "The Player takes Damage equal to their Speciality level."
+        }
+      },
+      {
+        "id": 10,
+        "charge": {
+          "type": "DAMAGE",
+          "damage": 3,
+          "description": "The Player takes 3 Damage."
+        },
+        "bite": {
+          "type": "DAMAGE",
+          "damage": 5,
+          "description": "The Player takes 5 Damage."
+        }
+      },
+      {
+        "id": 11,
+        "charge": {
+          "type": "DAMAGE",
+          "damage": 5,
+          "description": "The Player takes 5 Damage."
+        },
+        "bite": {
+          "type": "DAMAGE",
+          "description": "The Player takes Damage equal to their Alchemy level."
+        }
+      },
+      {
+        "id": 12,
+        "charge": {
+          "type": "DAMAGE",
+          "damage": 2,
+          "description": "The Player takes 2 Damage."
+        },
+        "bite": {
+          "type": "DAMAGE",
+          "damage": 3,
+          "description": "The Player takes 3 Damage."
+        }
+      },
+      {
+        "id": 13,
+        "charge": {
+          "type": "DAMAGE",
+          "damage": 2,
+          "description": "The Player takes 2 Damage."
+        },
+        "bite": {
+          "type": "MOD-DAMAGE",
+          "level-modifier": {
+            "1": 0,
+            "2": 1,
+            "3": 2
+          },
+          "description": "The Player lowers their Alchemy level by 1 and takes %%x%% Damage."
+        }
+      },
+      {
+        "id": 14,
+        "charge": {
+          "type": "MOD-DISCARD",
+          "level-modifier": {
+            "1": 1,
+            "2": 2,
+            "3": 3
+          },
+          "description": "The Player discards any %%x%% cards from their hand (empty hand: from the top if their deck) according to the Monster's level."
+        },
+        "bite": {
+          "type": "DAMAGE",
+          "damage": 3,
+          "description": "The Player takes 3 Damage."
+        }
+      },
+      {
+        "id": 15,
+        "charge": {
+          "type": "DAMAGE",
+          "damage": 4,
+          "description": "The Player takes 4 Damage."
+        },
+        "bite": {
+          "type": "MOD-DAMAGE",
+          "level-modifier": {
+            "1": 0,
+            "2": 1,
+            "3": 2
+          },
+          "description": "The Player lowers their Combat level by 1 and takes %%x%% Damage."
+        }
+      },
+      {
+        "id": 16,
+        "charge": {
+          "type": "MOD-DAMAGE",
+          "level-modifier": {
+            "1": 1,
+            "2": 2,
+            "3": 3
+          },
+          "description": "The Player takes %%x%% Damage."
+        },
+        "bite": {
+          "type": "MOD-DAMAGE",
+          "level-modifier": {
+            "1": 0,
+            "2": 1,
+            "3": 2
+          },
+          "description": "The Player lowers their Speciality level by 1 and takes %%x%% Damage."
+        }
+      },
+      {
+        "id": 17,
+        "charge": {
+          "type": "DAMAGE",
+          "damage": 4,
+          "description": "The Player takes 4 Damage."
+        },
+        "bite": {
+          "type": "DAMAGE",
+          "damage": 2,
+          "description": "The Player takes 2 Damage."
+        }
+      },
+      {
+        "id": 18,
+        "charge": {
+          "type": "DAMAGE",
+          "damage": 2,
+          "description": "The Player takes 2 Damage."
+        },
+        "bite": {
+          "type": "DAMAGE",
+          "damage": 4,
+          "description": "The Player takes 4 Damage."
+        }
+      },
+      {
+        "id": 19,
+        "charge": {
+          "type": "DAMAGE",
+          "damage": 3,
+          "description": "The Player takes 3 Damage."
+        },
+        "bite": {
+          "type": "DAMAGE",
+          "damage": 4,
+          "description": "The Player takes 4 Damage."
+        }
+      },
+      {
+        "id": 20,
+        "charge": {
+          "type": "DAMAGE",
+          "damage": 3,
+          "description": "The Player takes 3 Damage."
+        },
+        "bite": {
+          "type": "MOD-DAMAGE",
+          "description": "The Player takes Damage equal to their Defense level."
+        }
+      }
+    ],
+    "monster-trail": [],
+    "legendary-hunt": []
+  }
+}
