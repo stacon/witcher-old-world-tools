@@ -1,19 +1,13 @@
 import { ref, computed } from 'vue';
 import { defineStore } from 'pinia';
 import DECK_TYPE from '@/constants/deckType';
+import PHASES from './constants/phases';
 import { getMonsterActionsDeck } from '@/stores/utils/getMonsterActionsDeck';
-
-const PHASES = Object.freeze({
-  NON_STARTED: 'non-started',
-  ONGOING: 'ongoing',
-  VIPER: 'viper',
-  WON: 'won',
-  KNOCKED_OUT: 'knocked-out',
-});
+import { monsterLevelByMonsterHealth } from '@/utils';
 
 const INITIAL_STATE = {
-  phase: PHASES.NON_STARTED,
-  initialMosterHealth: null,
+  phase: PHASES.NOT_STARTED,
+  initialMosterHealth: 10,
   monsterLevel: null,
   deck: [],
 };
@@ -30,22 +24,24 @@ export const useMonsterFightStore = defineStore('monsterFight', () => {
     state.value = {
       ...INITIAL_STATE,
       phase: PHASES.ONGOING,
+      initialMosterHealth,
+      monsterLevel: monsterLevelByMonsterHealth(initialMosterHealth),
       deck: getMonsterActionsDeck(initialMosterHealth, deckType),
     };
   };
 
-  const monsterLevel = computed(() => {
-    if (state.value.monsterHealth <= 12) {
-      return 1;
-    }
-    if (state.value.monsterHealth <= 15) {
-      return 2;
-    }
-    return 3;
-  });
+  const resetMonsterFight = () => {
+    state.value = INITIAL_STATE;
+    poisonState.value = INITIAL_POISON_STATE;
+  };
+
+  const currentMonsterHealth = computed(() => state.value.deck.length);
+  const phase = computed(() => state.value.phase);
 
   return {
     initiateFight,
-    monsterLevel,
+    resetMonsterFight,
+    currentMonsterHealth,
+    phase,
   };
 });

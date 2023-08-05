@@ -1,0 +1,1 @@
+export { monsterLevelByMonsterHealth } from './monsterLevelByMonsterHealth';
