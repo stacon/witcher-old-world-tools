@@ -10,6 +10,7 @@ import PhaseKnockedOut from './components/phase-knocked-out/PhaseKnockedOut.vue'
 
 const monsterFightState = useMonsterFightStore();
 const phase = computed(() => monsterFightState.phase);
+const showResetButton = computed(() => phase.value !== PHASES.NOT_STARTED);
 const onResetClick = monsterFightState.resetMonsterFight;
 
 const activeComponent = computed(() => {
@@ -32,5 +33,5 @@ const activeComponent = computed(() => {
 
 <template>
   <component :is="activeComponent" />
-  <button @click="onResetClick">Reset</button>
+  <button v-if="showResetButton" @click="onResetClick">Reset</button>
 </template>
