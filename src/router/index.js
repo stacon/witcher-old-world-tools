@@ -8,19 +8,19 @@ const router = createRouter({
     {
       path: ROUTES.HOME,
       name: 'home',
-      component: ToolsView
+      component: ToolsView,
     },
     {
       path: ROUTES.TOOLS,
       name: 'tools',
-      component: ToolsView
+      component: ToolsView,
     },
     {
       path: ROUTES.MONSTER_FIGHT,
       name: 'monster-fight',
-      component: () => import('../views/MonsterFightView.vue')
-    }
-  ]
+      component: () => import('../views/MonsterFightView.vue'),
+    },
+  ],
 });
 
 export default router;
