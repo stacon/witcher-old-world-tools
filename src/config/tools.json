@@ -2,7 +2,6 @@
   {
     "id": 1,
     "name": "Monster Fight Tool",
-    "route": "ROUTES.MONSTER_FIGHT",
     "status": "ACTIVE"
   }
 ]

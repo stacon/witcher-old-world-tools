@@ -32,6 +32,14 @@ const activeComponent = computed(() => {
 </script>
 
 <template>
-  <component :is="activeComponent" />
-  <button v-if="showResetButton" @click="onResetClick">Reset</button>
+  <div class="flex flex-col items-center">
+    <component :is="activeComponent" />
+    <button
+      class="px-8 py-2 border border-black bg-black text-white font-semibold rounded-lg mt-4"
+      v-if="showResetButton"
+      @click="onResetClick"
+    >
+      Reset
+    </button>
+  </div>
 </template>

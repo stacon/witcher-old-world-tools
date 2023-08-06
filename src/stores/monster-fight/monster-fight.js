@@ -2,8 +2,8 @@ import { ref, computed } from 'vue';
 import { defineStore } from 'pinia';
 import DECK_TYPE from '@/constants/deckType';
 import PHASES from './constants/phases';
-import { getMonsterActionsDeck } from '@/stores/utils/getMonsterActionsDeck';
-import { monsterLevelByMonsterHealth } from '@/utils';
+import MONSTER_ACTION from './constants/monster-actions';
+import { monsterLevelByMonsterHealth, getMonsterActionsDeck } from '@/utils';
 
 const INITIAL_STATE = {
   phase: PHASES.NOT_STARTED,
@@ -11,6 +11,7 @@ const INITIAL_STATE = {
   monsterLevel: null,
   history: [],
   deck: [],
+  currentAttack: null,
 };
 
 const INITIAL_POISON_STATE = {
@@ -23,6 +24,8 @@ export const useMonsterFightStore = defineStore('monsterFight', () => {
 
   const currentMonsterHealth = computed(() => state.value.deck.length);
   const phase = computed(() => state.value.phase);
+  const currentAttack = computed(() => state.value.currentAttack);
+  const monsterLevel = computed(() => state.value.monsterLevel);
 
   const initiateFight = (initialMosterHealth, deckType = DECK_TYPE.BASIC) => {
     state.value = {
@@ -53,13 +56,29 @@ export const useMonsterFightStore = defineStore('monsterFight', () => {
     }
     state.value.deck.splice(0, damage);
   };
+  const monsterAttack = (type) => {
+    state.value = {
+      ...state.value,
+      currentAttack: {
+        type,
+        action: state.value.deck.splice(0, 1)[0][type],
+      },
+    };
+  };
+
+  const monsterChargeAttack = () => monsterAttack(MONSTER_ACTION.CHARGE);
+  const monsterBiteAttack = () => monsterAttack(MONSTER_ACTION.BITE);
 
   return {
+    currentMonsterHealth,
+    phase,
+    currentAttack,
+    monsterLevel,
     initiateFight,
     resetMonsterFight,
     playerKnockedOut,
     inflictDamageToMonster,
-    currentMonsterHealth,
-    phase,
+    monsterChargeAttack,
+    monsterBiteAttack,
   };
 });

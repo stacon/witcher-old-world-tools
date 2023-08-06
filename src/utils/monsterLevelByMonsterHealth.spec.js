@@ -1,4 +1,4 @@
-import { test } from 'vitest';
+import { expect, test } from 'vitest';
 import { monsterLevelByMonsterHealth } from './monsterLevelByMonsterHealth';
 
 test('monsterLevelByMonsterHealth should return 1 for monsterHealth <= 12', () => {
