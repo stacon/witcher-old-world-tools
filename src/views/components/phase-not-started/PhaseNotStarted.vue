@@ -11,8 +11,8 @@ const inputErrors = computed(() => ui.errors);
 
 const DECK_SELECTIONS = [
   { type: DECK_TYPE.BASIC, description: 'Basic' },
-  { type: DECK_TYPE.MONSTER_TRAIL, description: 'Monster Trail' },
-  { type: DECK_TYPE.LEGENDARY_HUNT, description: 'Legendary Hunt' },
+  { type: DECK_TYPE.MONSTER_TRAIL, description: 'Monster Trail', disabled: true },
+  { type: DECK_TYPE.LEGENDARY_HUNT, description: 'Legendary Hunt', disabled: true },
 ];
 </script>
 <template>
@@ -30,11 +30,13 @@ const DECK_SELECTIONS = [
           />
           <span class="ml-1">level {{ monsterLevel }}</span>
         </label>
-        <div class="flex gap-x-2 justify-around">
+        <div class="flex gap-x-2 justify-around mt-2">
           <button
             v-for="selection in DECK_SELECTIONS"
             :key="selection.type"
-            type="submit"
+            :disabled="selection.disabled"
+            class="px-2 border border-black rounded-lg"
+            :class="selection.disabled ? 'text-gray-300 italic border-gray-300' : ''"
             @click="onInitiateFightClick(selection.type)"
           >
             {{ selection.description }}
