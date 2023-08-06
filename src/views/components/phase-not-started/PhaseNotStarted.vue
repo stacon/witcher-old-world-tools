@@ -12,7 +12,7 @@ const inputErrors = computed(() => ui.errors);
 const DECK_SELECTIONS = [
   { type: DECK_TYPE.BASIC, description: 'Basic' },
   { type: DECK_TYPE.MONSTER_TRAIL, description: 'Monster Trail', disabled: true },
-  { type: DECK_TYPE.LEGENDARY_HUNT, description: 'Legendary Hunt', disabled: true },
+  { type: DECK_TYPE.LEGENDARY_HUNT, description: 'Legendary Hunt' },
 ];
 </script>
 <template>

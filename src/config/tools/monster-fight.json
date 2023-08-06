@@ -2,107 +2,208 @@
   "cards": {
     "basic": [
       {
-        "id": 1,
+        "id": "B1",
         "charge": "TRASH:1",
         "bite": "DMG:3"
       },
       {
-        "id": 2,
-        "charge": "DISCARD:MONSTER_LEVEL",
+        "id": "B2",
+        "charge": "DISCARD_HAND:MONSTER_LEVEL",
         "bite": "DMG:MONSTER_LEVEL+2"
       },
       {
-        "id": 3,
+        "id": "B3",
         "charge": "TRASH:1",
         "bite": "DMG:SKILL:COMBAT"
       },
       {
-        "id": 4,
-        "charge": "DISCARD:MONSTER_LEVEL",
+        "id": "B4",
+        "charge": "DISCARD_HAND:MONSTER_LEVEL",
         "bite": "DMG:4"
       },
       {
-        "id": 5,
+        "id": "B5",
         "charge": "DMG:5",
         "bite": "DMG:2"
       },
       {
-        "id": 6,
-        "charge": "DISCARD:MONSTER_LEVEL",
+        "id": "B6",
+        "charge": "DISCARD_HAND:MONSTER_LEVEL",
         "bite": "DMG:4"
       },
       {
-        "id": 7,
+        "id": "B7",
         "charge": "DMG:3",
         "bite": "DMG:5"
       },
       {
-        "id": 8,
+        "id": "B8",
         "charge": "TRASH:1",
         "bite": "DMG:2"
       },
       {
-        "id": 9,
+        "id": "B9",
         "charge": "DMG:4",
         "bite": "DMG:SKILL:SPECIALITY"
       },
       {
-        "id": 10,
+        "id": "B10",
         "charge": "DMG:3",
         "bite": "DMG:5"
       },
       {
-        "id": 11,
+        "id": "B11",
         "charge": "DMG:5",
         "bite": "DMG:SKILL:ALCHEMY"
       },
       {
-        "id": 12,
+        "id": "B12",
         "charge": "DMG:2",
         "bite": "DMG:3"
       },
       {
-        "id": 13,
+        "id": "B13",
         "charge": "DMG:2",
         "bite": "DMG:MONSTER_LEVEL-1/SKILL_DECREASE:ALCHEMY:1"
       },
       {
-        "id": 14,
-        "charge": "DISCARD:MONSTER_LEVEL",
+        "id": "B14",
+        "charge": "DISCARD_HAND:MONSTER_LEVEL",
         "bite": "DMG:3"
       },
       {
-        "id": 15,
+        "id": "B15",
         "charge": "DMG:4",
         "bite": "DMG:MONSTER_LEVEL-1/SKILL_DECREASE:COMBAT:1"
       },
       {
-        "id": 16,
+        "id": "B16",
         "charge": "DMG:MONSTER_LEVEL",
         "bite": "DMG:MONSTER_LEVEL-1/SKILL_DECREASE:SPECIALITY:1"
       },
       {
-        "id": 17,
+        "id": "B17",
         "charge": "DMG:4",
         "bite": "DMG:2"
       },
       {
-        "id": 18,
+        "id": "B18",
         "charge": "DMG:2",
         "bite": "DMG:4"
       },
       {
-        "id": 19,
+        "id": "B19",
         "charge": "DMG:3",
         "bite": "DMG:4"
       },
       {
-        "id": 20,
+        "id": "B20",
         "charge": "DMG:3",
         "bite": "DMG:SKILL:DEFENSE"
       }
     ],
     "monster-trail": [],
-    "legendary-hunt": []
+    "legendary-hunt": [
+      {
+        "id": "LH1",
+        "charge": "SPECIAL_ATTACK:2",
+        "bite": "DMG:5"
+      },
+      {
+        "id": "LH2",
+        "charge": "DMG:4",
+        "bite": "SPECIAL_ATTACK:3"
+      },
+      {
+        "id": "LH3",
+        "charge": "DMG:5",
+        "bite": "DMG:4"
+      },
+      {
+        "id": "LH4",
+        "charge": "SPECIAL_ATTACK:1",
+        "bite": "DISCARD_DECK:3"
+      },
+      {
+        "id": "LH5",
+        "charge": "DISCARD_DECK:3",
+        "bite": "SPECIAL_ATTACK:2"
+      },
+      {
+        "id": "LH6",
+        "charge": "DISCARD_DECK:3",
+        "bite": "SPECIAL_ATTACK:3"
+      },
+      {
+        "id": "LH7",
+        "charge": "SPECIAL_ATTACK:4",
+        "bite": "DISCARD_DECK:3"
+      },
+      {
+        "id": "LH8",
+        "charge": "DMG:6",
+        "bite": "SPECIAL_ATTACK:1"
+      },
+      {
+        "id": "LH9",
+        "charge": "DISCARD_DECK:3",
+        "bite": "DMG:6"
+      },
+      {
+        "id": "LH10",
+        "charge": "SPECIAL_ATTACK:1",
+        "bite": "DMG:4"
+      },
+      {
+        "id": "LH11",
+        "charge": "SPECIAL_ATTACK:3",
+        "bite": "DMG:6"
+      },
+      {
+        "id": "LH12",
+        "charge": "DMG:4",
+        "bite": "DMG:5"
+      },
+      {
+        "id": "LH13",
+        "charge": "SPECIAL_ATTACK:4",
+        "bite": "DMG:4"
+      },
+      {
+        "id": "LH14",
+        "charge": "DMG:5",
+        "bite": "SPECIAL_ATTACK:4"
+      },
+      {
+        "id": "LH15",
+        "charge": "SPECIAL_ATTACK:3",
+        "bite": "DMG:5"
+      },
+      {
+        "id": "LH16",
+        "charge": "DMG:4",
+        "bite": "SPECIAL_ATTACK:2"
+      },
+      {
+        "id": "LH17",
+        "charge": "DMG:5",
+        "bite": "SPECIAL_ATTACK:1"
+      },
+      {
+        "id": "LH18",
+        "charge": "DMG:6",
+        "bite": "DISCARD_DECK:3"
+      },
+      {
+        "id": "LH19",
+        "charge": "SPECIAL_ATTACK:2",
+        "bite": "DMG:6"
+      },
+      {
+        "id": "LH20",
+        "charge": "DMG:6",
+        "bite": "SPECIAL_ATTACK:4"
+      }
+    ]
   }
 }
