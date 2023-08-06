@@ -5,7 +5,7 @@ import vue from '@vitejs/plugin-vue';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/wticher-old-world-tools/',
+  base: '/witcher-old-world-tools/',
   plugins: [vue()],
   resolve: {
     alias: {
