@@ -4,6 +4,7 @@ import DECK_TYPE from '@/constants/deckType';
 import PHASES from './constants/phases';
 import MONSTER_ACTION from './constants/monster-actions';
 import { monsterLevelByMonsterHealth, getMonsterActionsDeck } from '@/utils';
+import { useUIAppStore } from '@/stores/ui/app/app';
 
 const INITIAL_STATE = {
   phase: PHASES.NOT_STARTED,
@@ -15,12 +16,14 @@ const INITIAL_STATE = {
 };
 
 const INITIAL_POISON_STATE = {
-  deck: [],
+  initialPoisonDeck: [],
 };
 
 export const useMonsterFightStore = defineStore('monsterFight', () => {
   const state = ref(INITIAL_STATE);
   const poisonState = ref(INITIAL_POISON_STATE);
+
+  const uiApp = useUIAppStore();
 
   const currentMonsterHealth = computed(() => state.value.deck.length);
   const phase = computed(() => state.value.phase);
@@ -69,16 +72,35 @@ export const useMonsterFightStore = defineStore('monsterFight', () => {
   const monsterChargeAttack = () => monsterAttack(MONSTER_ACTION.CHARGE);
   const monsterBiteAttack = () => monsterAttack(MONSTER_ACTION.BITE);
 
+  const resetPoisonAction = () => {
+    poisonState.value = INITIAL_POISON_STATE;
+  };
+  const startPoisonAction = () => {
+    uiApp.startModal({
+      onClose: resetPoisonAction,
+    });
+  };
+
+  const stopPoisonAction = () => {
+    uiApp.closeModal();
+    resetPoisonAction();
+  };
+
+  const inPoisonAction = computed(() => initialPoisonDeck.length);
+
   return {
     currentMonsterHealth,
     phase,
     currentAttack,
     monsterLevel,
+    inPoisonAction,
     initiateFight,
     resetMonsterFight,
     playerKnockedOut,
     inflictDamageToMonster,
     monsterChargeAttack,
     monsterBiteAttack,
+    startPoisonAction,
+    stopPoisonAction,
   };
 });

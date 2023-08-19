@@ -1,6 +1,7 @@
 <script setup>
 import { computed } from 'vue';
 import PhaseTitle from '../phase-title/PhaseTitle.vue';
+import Button from './button/Button.vue';
 import { useMonsterFightStore } from '@/stores/monster-fight/monster-fight';
 
 const monsterFightStore = useMonsterFightStore();
@@ -38,39 +39,21 @@ const onInflictDamageToMonsterClick = (damage) => {
     </div>
     <div class="flex gap-1" v-if="monsterHasRemainingHealth">
       <button>Inflict Damage:</button>
-      <button class="px-2 border border-black rounded-lg" @click="onInflictDamageToMonsterClick(1)">
-        1
-      </button>
-      <button class="px-2 border border-black rounded-lg" @click="onInflictDamageToMonsterClick(2)">
-        2
-      </button>
-      <button class="px-2 border border-black rounded-lg" @click="onInflictDamageToMonsterClick(3)">
-        3
-      </button>
-      <button disabled class="px-2 border border-gray-300 rounded-lg text-gray-300 italic">
-        Poison
-      </button>
+      <Button v-for="number in [1, 2, 3]" @click="onInflictDamageToMonsterClick(number)">
+        {{ number }}
+      </Button>
+      <Button disabled @click="monsterFightStore.startPoisonAction"> Poison </Button>
     </div>
     <div v-if="monsterHasRemainingHealth" class="flex gap-1 mt-2">
-      <button class="px-2 border border-black rounded-lg" @click="onChargeAttackClick">
-        Charge
-      </button>
-      <button class="px-2 border border-black rounded-lg" @click="onRandomAttackClick">
-        Charge/Bite
-      </button>
-      <button class="px-2 border border-black rounded-lg" @click="onBiteAttackClick">Bite</button>
+      <Button @click="onChargeAttackClick"> Charge </Button>
+      <Button @click="onRandomAttackClick"> Charge/Bite </Button>
+      <Button @click="onBiteAttackClick">Bite</Button>
     </div>
     <div class="flex flex-col gap-1 mt-2">
-      <button class="px-2 border border-black rounded-lg" @click="onKnockedOutClick">
-        Player Knocked out
-      </button>
-      <button
-        v-if="!monsterHasRemainingHealth"
-        class="px-2 border border-black rounded-lg"
-        @click="onInflictDamageToMonsterClick(0)"
-      >
+      <Button @click="onKnockedOutClick"> Player Knocked out </Button>
+      <Button v-if="!monsterHasRemainingHealth" @click="onInflictDamageToMonsterClick(0)">
         Monster Slain
-      </button>
+      </Button>
     </div>
   </div>
 </template>
