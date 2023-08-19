@@ -2,6 +2,7 @@
 import { computed } from 'vue';
 import DECK_TYPE from '@/constants/deckType';
 import { useUIMonsterFightViewStore } from '@/stores/ui/monster-fight-view/monsterFightView';
+import Button from '@/components/button/Button.vue';
 import PhaseTitle from '../phase-title/PhaseTitle.vue';
 
 const ui = useUIMonsterFightViewStore();
@@ -31,16 +32,14 @@ const DECK_SELECTIONS = [
           <span class="ml-1">level {{ monsterLevel }}</span>
         </label>
         <div class="flex gap-x-2 justify-around mt-2">
-          <button
+          <Button
             v-for="selection in DECK_SELECTIONS"
             :key="selection.type"
             :disabled="selection.disabled"
-            class="px-2 border border-black rounded-lg"
-            :class="selection.disabled ? 'text-gray-300 italic border-gray-300' : ''"
             @click="onInitiateFightClick(selection.type)"
           >
             {{ selection.description }}
-          </button>
+          </Button>
         </div>
         <div>
           <span class="text-red-500" v-for="error in inputErrors" :key="error">

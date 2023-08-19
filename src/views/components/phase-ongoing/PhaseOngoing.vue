@@ -1,7 +1,7 @@
 <script setup>
 import { computed } from 'vue';
 import PhaseTitle from '../phase-title/PhaseTitle.vue';
-import Button from './button/Button.vue';
+import Button from '@/components/button/Button.vue';
 import { useMonsterFightStore } from '@/stores/monster-fight/monster-fight';
 
 const monsterFightStore = useMonsterFightStore();
