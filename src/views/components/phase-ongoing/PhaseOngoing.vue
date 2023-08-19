@@ -42,7 +42,9 @@ const onInflictDamageToMonsterClick = (damage) => {
       <Button v-for="number in [1, 2, 3]" @click="onInflictDamageToMonsterClick(number)">
         {{ number }}
       </Button>
-      <Button @click="monsterFightStore.startVenomousSteelAction()"> Venomous Steel </Button>
+      <Button disabled @click="monsterFightStore.startVenomousSteelAction()">
+        Venomous Steel
+      </Button>
     </div>
     <div v-if="monsterHasRemainingHealth" class="flex gap-1 mt-2">
       <Button @click="onChargeAttackClick"> Charge </Button>
