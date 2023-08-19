@@ -15,13 +15,13 @@ const INITIAL_STATE = {
   currentAttack: null,
 };
 
-const INITIAL_POISON_STATE = {
-  initialPoisonDeck: [],
+const INITIAL_VENOMOUS_STEEL_STATE = {
+  initialVenomousSteelDeck: [],
 };
 
 export const useMonsterFightStore = defineStore('monsterFight', () => {
   const state = ref(INITIAL_STATE);
-  const poisonState = ref(INITIAL_POISON_STATE);
+  const venomousSteelState = ref(INITIAL_VENOMOUS_STEEL_STATE);
 
   const uiApp = useUIAppStore();
 
@@ -42,7 +42,7 @@ export const useMonsterFightStore = defineStore('monsterFight', () => {
 
   const resetMonsterFight = () => {
     state.value = INITIAL_STATE;
-    poisonState.value = INITIAL_POISON_STATE;
+    venomousSteelState.value = INITIAL_VENOMOUS_STEEL_STATE;
   };
 
   const playerKnockedOut = () => {
@@ -72,35 +72,35 @@ export const useMonsterFightStore = defineStore('monsterFight', () => {
   const monsterChargeAttack = () => monsterAttack(MONSTER_ACTION.CHARGE);
   const monsterBiteAttack = () => monsterAttack(MONSTER_ACTION.BITE);
 
-  const resetPoisonAction = () => {
-    poisonState.value = INITIAL_POISON_STATE;
+  const resetVenomousSteelAction = () => {
+    venomousSteelState.value = INITIAL_VENOMOUS_STEEL_STATE;
   };
-  const startPoisonAction = () => {
+  const startVenomousSteelAction = () => {
     uiApp.startModal({
-      onClose: resetPoisonAction,
+      onClose: resetVenomousSteelAction,
     });
   };
 
-  const stopPoisonAction = () => {
+  const stopVenomousSteelAction = () => {
     uiApp.closeModal();
-    resetPoisonAction();
+    resetVenomousSteelAction();
   };
 
-  const inPoisonAction = computed(() => initialPoisonDeck.length);
+  const inVenomousSteelAction = computed(() => initialVenomousSteelDeck.length);
 
   return {
     currentMonsterHealth,
     phase,
     currentAttack,
     monsterLevel,
-    inPoisonAction,
+    inVenomousSteelAction,
     initiateFight,
     resetMonsterFight,
     playerKnockedOut,
     inflictDamageToMonster,
     monsterChargeAttack,
     monsterBiteAttack,
-    startPoisonAction,
-    stopPoisonAction,
+    startVenomousSteelAction,
+    stopVenomousSteelAction,
   };
 });

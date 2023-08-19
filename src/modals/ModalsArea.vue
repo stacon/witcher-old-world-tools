@@ -1,7 +1,7 @@
 <script setup>
-import PoisonActionModal from './PoisonActionModal.vue';
+import VenomousSteelActionModal from './VenomousSteelActionModal.vue';
 </script>
 
 <template>
-  <PoisonActionModal />
+  <VenomousSteelActionModal />
 </template>
