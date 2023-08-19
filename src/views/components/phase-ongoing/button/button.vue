@@ -10,8 +10,8 @@ const emit = defineEmits(['click']);
 <template>
   <button
     :[disabled]="disabled"
-    class="px-2 border rounded-lg text-black border-black"
-    :class="{ 'border-gray-300 text-gray-300 italic': disabled }"
+    class="px-2 border rounded-lg text-black border-black hover:bg-gray-100"
+    :class="{ 'border-gray-300 text-gray-300 italic hover:bg-transparent': disabled }"
     @click="emit('click')"
   >
     <slot></slot>
