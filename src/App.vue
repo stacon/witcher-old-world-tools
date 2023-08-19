@@ -18,10 +18,12 @@ const uiAppStore = useUIAppStore();
     </div>
     <div
       v-if="uiAppStore.modalVisible"
-      @click="uiAppStore.closeModal()"
+      @click.stop="uiAppStore.closeModal()"
       class="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50"
-    >
-      <ModalsArea class="m-4" />
-    </div>
+    ></div>
+    <ModalsArea
+      v-if="uiAppStore.modalVisible"
+      class="absolute top-1/2 left-1/2 -translate-x-1/2 w-10/12"
+    />
   </div>
 </template>
