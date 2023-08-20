@@ -4,9 +4,9 @@ const props = defineProps({
     type: Boolean,
   },
 });
-
 const emit = defineEmits(['click']);
 </script>
+
 <template>
   <button
     :[disabled]="disabled"

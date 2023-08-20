@@ -23,7 +23,7 @@ const uiAppStore = useUIAppStore();
     ></div>
     <ModalsArea
       v-if="uiAppStore.modalVisible"
-      class="absolute top-1/2 left-1/2 -translate-x-1/2 w-10/12"
+      class="absolute top-6 md:top-10 left-1/2 -translate-x-1/2 w-10/12"
     />
   </div>
 </template>

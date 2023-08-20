@@ -1,10 +1,14 @@
-import { ref, computed } from 'vue';
+import { computed, reactive } from 'vue';
 import { defineStore } from 'pinia';
+
 import DECK_TYPE from '@/constants/deckType';
+import VENOMOUS_STEEL_ACTION_STEPS from '@/constants/venomousSteelActionSteps';
+import VENOMOUS_STEEL_LEVEL from '@/constants/venomousSteelLevel';
+import { useUIAppStore } from '@/stores/ui/app/app';
+import { monsterLevelByMonsterHealth, getMonsterActionsDeck } from '@/utils';
+
 import PHASES from './constants/phases';
 import MONSTER_ACTION from './constants/monster-actions';
-import { monsterLevelByMonsterHealth, getMonsterActionsDeck } from '@/utils';
-import { useUIAppStore } from '@/stores/ui/app/app';
 
 const INITIAL_STATE = {
   phase: PHASES.NOT_STARTED,
@@ -15,70 +19,79 @@ const INITIAL_STATE = {
   currentAttack: null,
 };
 
-const INITIAL_VENOMOUS_STEEL_STATE = {
-  initialVenomousSteelDeck: [],
-};
+const INITIAL_VENOMOUS_STEEL_STATE = Object.freeze({
+  step: VENOMOUS_STEEL_ACTION_STEPS.NOT_STARTED,
+  selectedLevel: null,
+  venomousSteelDeck: [],
+});
 
 export const useMonsterFightStore = defineStore('monsterFight', () => {
-  const state = ref(INITIAL_STATE);
-  const venomousSteelState = ref(INITIAL_VENOMOUS_STEEL_STATE);
-
   const uiApp = useUIAppStore();
 
-  const currentMonsterHealth = computed(() => state.value.deck.length);
-  const phase = computed(() => state.value.phase);
-  const currentAttack = computed(() => state.value.currentAttack);
-  const monsterLevel = computed(() => state.value.monsterLevel);
+  const state = reactive({ ...INITIAL_STATE });
+  const venomousSteelState = reactive({ ...INITIAL_VENOMOUS_STEEL_STATE });
+
+  const currentMonsterHealth = computed(() => state.deck.length);
+  const phase = computed(() => state.phase);
+  const currentAttack = computed(() => state.currentAttack);
+  const monsterLevel = computed(() => state.monsterLevel);
+  const venomousSteelActionStep = computed(() => venomousSteelState.step);
+  const venomousSteelDeck = computed(() => venomousSteelState.venomousSteelDeck);
 
   const initiateFight = (initialMosterHealth, deckType = DECK_TYPE.BASIC) => {
-    state.value = {
+    Object.assign(state, {
       ...INITIAL_STATE,
       phase: PHASES.ONGOING,
       initialMosterHealth,
       monsterLevel: monsterLevelByMonsterHealth(initialMosterHealth),
       deck: getMonsterActionsDeck(initialMosterHealth, deckType),
-    };
+    });
   };
 
   const resetMonsterFight = () => {
-    state.value = INITIAL_STATE;
-    venomousSteelState.value = INITIAL_VENOMOUS_STEEL_STATE;
+    Object.assign(state, INITIAL_STATE);
+    Object.assign(venomousSteelState, INITIAL_VENOMOUS_STEEL_STATE);
   };
 
   const playerKnockedOut = () => {
     if (currentMonsterHealth.value > 1) {
-      return (state.value = { ...state.value, phase: PHASES.KNOCKED_OUT });
+      return (state.phase = PHASES.KNOCKED_OUT);
     }
-    return (state.value = { ...state.value, phase: PHASES.DRIVEN_AWAY });
+    return (state.phase = PHASES.DRIVEN_AWAY);
   };
 
   const inflictDamageToMonster = (damage) => {
     if (damage >= currentMonsterHealth.value) {
-      state.value = { ...state.value, deck: [], phase: PHASES.WON };
+      state.deck = [];
+      state.phase = PHASES.WON;
       return;
     }
-    state.value.deck.splice(0, damage);
+    state.deck.splice(0, damage);
   };
+
   const monsterAttack = (type) => {
-    state.value = {
-      ...state.value,
-      currentAttack: {
-        type,
-        action: state.value.deck.splice(0, 1)[0][type],
-      },
+    state.currentAttack = {
+      type,
+      action: state.deck.splice(0, 1)[0][type],
     };
   };
 
   const monsterChargeAttack = () => monsterAttack(MONSTER_ACTION.CHARGE);
   const monsterBiteAttack = () => monsterAttack(MONSTER_ACTION.BITE);
-
   const resetVenomousSteelAction = () => {
-    venomousSteelState.value = INITIAL_VENOMOUS_STEEL_STATE;
+    Object.assign(venomousSteelState, INITIAL_VENOMOUS_STEEL_STATE);
   };
   const startVenomousSteelAction = () => {
+    venomousSteelState.step = VENOMOUS_STEEL_ACTION_STEPS.SELECTING_LEVEL;
     uiApp.startModal({
       onClose: resetVenomousSteelAction,
     });
+  };
+
+  const selectVenomousSteelLevel = (level) => {
+    venomousSteelState.selectedLevel = level;
+    venomousSteelState.venomousSteelDeck = state.deck.slice(0, VENOMOUS_STEEL_LEVEL[level].see);
+    venomousSteelState.step = VENOMOUS_STEEL_ACTION_STEPS.SELECTING_CARDS;
   };
 
   const stopVenomousSteelAction = () => {
@@ -86,14 +99,27 @@ export const useMonsterFightStore = defineStore('monsterFight', () => {
     resetVenomousSteelAction();
   };
 
-  const inVenomousSteelAction = computed(() => initialVenomousSteelDeck.length);
+  const commitVenomousSteelAction = (newDeck) => {
+    const remainingCards = newDeck.filter((_, index) => !isDiscardedIndex(index));
+    state.deck.splice(
+      0,
+      VENOMOUS_STEEL_LEVEL[venomousSteelState.selectedLevel].see,
+      ...remainingCards,
+    );
+    stopVenomousSteelAction();
+  };
+
+  const isDiscardedIndex = (index) =>
+    index < VENOMOUS_STEEL_LEVEL[venomousSteelState.selectedLevel].discard;
 
   return {
     currentMonsterHealth,
     phase,
     currentAttack,
     monsterLevel,
-    inVenomousSteelAction,
+    venomousSteelActionStep,
+    venomousSteelDeck,
+    isDiscardedIndex,
     initiateFight,
     resetMonsterFight,
     playerKnockedOut,
@@ -101,6 +127,8 @@ export const useMonsterFightStore = defineStore('monsterFight', () => {
     monsterChargeAttack,
     monsterBiteAttack,
     startVenomousSteelAction,
+    selectVenomousSteelLevel,
     stopVenomousSteelAction,
+    commitVenomousSteelAction,
   };
 });

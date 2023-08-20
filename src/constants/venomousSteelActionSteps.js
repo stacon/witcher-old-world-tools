@@ -1,0 +1,5 @@
+export default Object.freeze({
+  NOT_STARTED: 'NOT_STARTED',
+  SELECTING_LEVEL: 'SELECTING_LEVEL',
+  SELECTING_CARDS: 'SELECTING_CARDS',
+});

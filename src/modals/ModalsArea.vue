@@ -1,5 +1,5 @@
 <script setup>
-import VenomousSteelActionModal from './VenomousSteelActionModal.vue';
+import VenomousSteelActionModal from './venomous-steel-action-modal/VenomousSteelActionModal.vue';
 </script>
 
 <template>
