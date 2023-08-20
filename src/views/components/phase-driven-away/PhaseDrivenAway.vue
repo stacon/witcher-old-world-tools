@@ -6,7 +6,7 @@ import PhaseTitle from '../phase-title/PhaseTitle.vue';
     <PhaseTitle>Good Job! Monster Driven Away</PhaseTitle>
     <div>
       <ol>
-        <li>Take 1 Trail Token matching monsters Terrain (if you already haven't one).</li>
+        <li>Gain 2 Gold! Place the Gold on your Player Board.</li>
         <li>Add 0-cost Action card into your hand</li>
       </ol>
     </div>
