@@ -3,11 +3,7 @@ require('@rushstack/eslint-patch/modern-module-resolution');
 
 module.exports = {
   root: true,
-  extends: [
-    'plugin:vue/vue3-recommended',
-    'eslint:recommended',
-    '@vue/eslint-config-prettier/skip-formatting',
-  ],
+  extends: ['plugin:vue/vue3-recommended', 'eslint:recommended', '@vue/eslint-config-prettier/skip-formatting', 'plugin:storybook/recommended'],
   rules: {
     'prettier/prettier': 'error',
     'vue/component-name-in-template-casing': ['error', 'PascalCase'],

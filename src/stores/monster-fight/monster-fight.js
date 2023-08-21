@@ -37,6 +37,7 @@ export const useMonsterFightStore = defineStore('monsterFight', () => {
   const monsterLevel = computed(() => state.monsterLevel);
   const venomousSteelActionStep = computed(() => venomousSteelState.step);
   const venomousSteelDeck = computed(() => venomousSteelState.venomousSteelDeck);
+  const initialMosterHealth = computed(() => state.initialMosterHealth);
 
   const initiateFight = (initialMosterHealth, deckType = DECK_TYPE.BASIC) => {
     Object.assign(state, {
@@ -113,10 +114,11 @@ export const useMonsterFightStore = defineStore('monsterFight', () => {
     index < VENOMOUS_STEEL_LEVEL[venomousSteelState.selectedLevel].discard;
 
   return {
-    currentMonsterHealth,
-    phase,
     currentAttack,
+    currentMonsterHealth,
+    initialMosterHealth,
     monsterLevel,
+    phase,
     venomousSteelActionStep,
     venomousSteelDeck,
     isDiscardedIndex,
