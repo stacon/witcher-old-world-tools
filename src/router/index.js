@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router';
-// import ToolsView from '../views/ToolsView.vue';
 import ROUTES from './routes.enum';
 
 const router = createRouter({
@@ -13,7 +12,6 @@ const router = createRouter({
     {
       path: ROUTES.TOOLS,
       name: 'tools',
-      // component: ToolsView,
       redirect: ROUTES.MONSTER_FIGHT,
     },
     {
