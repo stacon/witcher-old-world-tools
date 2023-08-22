@@ -1,5 +1,5 @@
 <template>
-  <div class="text-xl font-extrabold">
+  <div class="font-cinzel text-xl font-bold">
     <slot></slot>
   </div>
 </template>

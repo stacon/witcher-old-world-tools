@@ -50,7 +50,7 @@ const healthBGColor = computed(() => styles.healthBG[monsterLevel.value]);
         role="increase-health"
         class="flex-1 text-3xl md:hover:bg-green-50 rounded-bl-xl active:bg-green-500 md:active:bg-green-500 transition-colors ease-in-out"
       >
-        &#8593;
+        &#9650;
       </button>
       <div class="bg-black h-full w-0.5"></div>
       <button
@@ -58,7 +58,7 @@ const healthBGColor = computed(() => styles.healthBG[monsterLevel.value]);
         role="decrease-health"
         class="flex-1 text-3xl md:hover:bg-red-50 rounded-br-xl active:bg-red-500 md:active:bg-red-500 transition-colors ease-in-out"
       >
-        &#8595;
+        &#9660;
       </button>
     </div>
   </div>

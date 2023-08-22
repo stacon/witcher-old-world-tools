@@ -36,18 +36,22 @@ const onRandomAttackClick = () => {
 
 <template>
   <div class="flex flex-col items-center gap-1 max-w-xl">
-    <PhaseTitle> Fighting against lvl {{ monsterLevel }} monster </PhaseTitle>
+    <PhaseTitle>
+      Fighting against a <span class="font-extrabold">lvl {{ monsterLevel }}</span> monster
+    </PhaseTitle>
 
     <div class="flex no-wrap w-full mb-5 text-center gap-1">
       <TheHealthBar :health="currentMonsterHealth" :maxHealth="initialMosterHealth" />
     </div>
 
     <div class="flex flex-col w-full items-center gap-1 p-2 border-2 border-gray-600 rounded-lg">
-      <span v-if="monsterHasRemainingHealth" class="text-xl">Monster Actions</span>
+      <span v-if="monsterHasRemainingHealth" class="font-cinzel font-semibold text-xl"
+        >Monster Actions</span
+      >
       <AttackRepresentationCard v-if="currentAttack" :attack="currentAttack" />
       <div v-if="monsterHasRemainingHealth" class="flex items-center gap-1">
         <Button @click="onChargeAttackClick"> Charge </Button>
-        <Button @click="onRandomAttackClick"> Charge/Bite </Button>
+        <Button @click="onRandomAttackClick"> &#10067; </Button>
         <Button @click="onBiteAttackClick">Bite</Button>
       </div>
     </div>
@@ -56,7 +60,7 @@ const onRandomAttackClick = () => {
       v-if="monsterHasRemainingHealth"
       class="flex flex-col w-full items-center gap-1 p-2 border-2 border-gray-600 rounded-lg"
     >
-      <span class="text-xl">Witcher Actions</span>
+      <span class="font-cinzel font-semibold text-xl">Witcher Actions</span>
       <div class="flex gap-1">
         <Button
           v-for="number in [1, 2, 3]"
@@ -71,7 +75,7 @@ const onRandomAttackClick = () => {
     </div>
 
     <div class="flex flex-col w-full items-center gap-1 p-2 border-2 border-gray-600 rounded-lg">
-      <span class="text-xl">Outcomes</span>
+      <span class="font-cinzel font-semibold text-xl">Outcomes</span>
       <Button @click="onKnockedOutClick"> Player Knocked out </Button>
       <Button v-if="!monsterHasRemainingHealth" @click="onInflictDamageToMonsterClick(0)">
         Monster Slain
