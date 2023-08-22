@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import ToolsView from '../views/ToolsView.vue';
+// import ToolsView from '../views/ToolsView.vue';
 import ROUTES from './routes.enum';
 
 const router = createRouter({
@@ -8,12 +8,13 @@ const router = createRouter({
     {
       path: ROUTES.HOME,
       name: 'home',
-      component: ToolsView,
+      redirect: ROUTES.MONSTER_FIGHT,
     },
     {
       path: ROUTES.TOOLS,
       name: 'tools',
-      component: ToolsView,
+      // component: ToolsView,
+      redirect: ROUTES.MONSTER_FIGHT,
     },
     {
       path: ROUTES.MONSTER_FIGHT,

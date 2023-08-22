@@ -7,7 +7,7 @@ import VENOMOUS_STEEL_LEVEL from '@/constants/venomousSteelLevel';
 import { useUIAppStore } from '@/stores/ui/app/app';
 import { monsterLevelByMonsterHealth, getMonsterActionsDeck } from '@/utils';
 
-import PHASES from './constants/phases';
+import PHASES from '@/constants/monsterFightPhases';
 import MONSTER_ACTION from './constants/monster-actions';
 
 const INITIAL_STATE = {
