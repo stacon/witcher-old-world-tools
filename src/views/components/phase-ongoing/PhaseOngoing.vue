@@ -4,7 +4,7 @@ import { storeToRefs } from 'pinia';
 import PhaseTitle from '../phase-title/PhaseTitle.vue';
 import { useMonsterFightStore } from '@/stores/monster-fight/monster-fight';
 import Button from '@/components/button/Button.vue';
-import HealthBar from '@/components/HealthBar.vue';
+import TheHealthBar from '@/components/the-health-bar/TheHealthBar.vue';
 import AttackRepresentationCard from './AttackRepresentationCard.vue';
 
 const monsterFightStore = useMonsterFightStore();
@@ -39,7 +39,7 @@ const onRandomAttackClick = () => {
     <PhaseTitle> Fighting against lvl {{ monsterLevel }} monster </PhaseTitle>
 
     <div class="flex no-wrap w-full mb-5 text-center gap-1">
-      <HealthBar :health="currentMonsterHealth" :maxHealth="initialMosterHealth" />
+      <TheHealthBar :health="currentMonsterHealth" :maxHealth="initialMosterHealth" />
     </div>
 
     <div class="flex flex-col w-full items-center gap-1 p-2 border-2 border-gray-600 rounded-lg">

@@ -1,13 +1,13 @@
-import HealthBar from '@/components/HealthBar.vue';
+import TheHealthBar from '@/components/the-health-bar/TheHealthBar.vue';
 
 export default {
-  title: 'Molecules/HealthBar',
-  component: HealthBar,
+  title: 'Molecules/TheHealthBar',
+  component: TheHealthBar,
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/vue/writing-docs/autodocs
   tags: ['autodocs'],
   render: (props) => ({
     components: {
-      HealthBar,
+      TheHealthBar,
     },
     setup() {
       // Story args can be spread into the returned object
@@ -16,7 +16,7 @@ export default {
       };
     },
     // Then, the spread values can be accessed directly in the template
-    template: '<HealthBar v-bind="props" />',
+    template: '<TheHealthBar v-bind="props" />',
   }),
   parameters: {
     // More on how to position stories at: https://storybook.js.org/docs/vue/configure/story-layout
