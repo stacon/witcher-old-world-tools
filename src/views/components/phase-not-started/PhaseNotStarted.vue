@@ -3,11 +3,11 @@ import { computed } from 'vue';
 import DECK_TYPE from '@/constants/deckType';
 import { useUIMonsterFightViewStore } from '@/stores/ui/monster-fight-view/monsterFightView';
 import Button from '@/components/button/Button.vue';
+import TheHealthSelection from '@/components/the-health-selection/TheHealthSelection.vue';
 import PhaseTitle from '../phase-title/PhaseTitle.vue';
 
 const ui = useUIMonsterFightViewStore();
 const onInitiateFightClick = ui.onInitiateFightClick;
-const monsterLevel = computed(() => ui.monsterLevel);
 const inputErrors = computed(() => ui.errors);
 
 const DECK_SELECTIONS = [
@@ -20,16 +20,10 @@ const DECK_SELECTIONS = [
   <div class="flex flex-col items-center text-center">
     <PhaseTitle>Select monster deck</PhaseTitle>
     <div>
-      <form @submit.prevent class="flex flex-col">
+      <form @submit.prevent class="flex flex-col items-center">
         <label for="InitialMonsterHealth">
-          <span>Monster Health:</span>
-          <input
-            id="InitialMonsterHealth"
-            type="number"
-            class="ml-1 w-7 text-center"
-            v-model="ui.inputMonsterHealth"
-          />
-          <span class="ml-1">level {{ monsterLevel }}</span>
+          <span>Set monster health:</span>
+          <TheHealthSelection @update:selectedHealth="ui.setMonsterHealth" />
         </label>
         <div class="flex gap-x-2 justify-around mt-2">
           <Button

@@ -19,10 +19,14 @@ export const useUIMonsterFightViewStore = defineStore('UI/monsterFightView', () 
   };
 
   const monsterLevel = computed(() => monsterLevelByMonsterHealth(inputMonsterHealth.value));
+  const setMonsterHealth = (health) => {
+    inputMonsterHealth.value = health;
+  };
 
   return {
     inputMonsterHealth,
     onInitiateFightClick,
+    setMonsterHealth,
     monsterLevel,
     errors,
   };
