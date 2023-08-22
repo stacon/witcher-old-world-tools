@@ -42,13 +42,10 @@ const onRandomAttackClick = () => {
       <HealthBar :health="currentMonsterHealth" :maxHealth="initialMosterHealth" />
     </div>
 
-    <div
-      v-if="monsterHasRemainingHealth"
-      class="flex flex-col w-full items-center gap-1 p-2 border-2 border-gray-600 rounded-lg"
-    >
-      <span class="text-xl">Monster Actions</span>
+    <div class="flex flex-col w-full items-center gap-1 p-2 border-2 border-gray-600 rounded-lg">
+      <span v-if="monsterHasRemainingHealth" class="text-xl">Monster Actions</span>
       <AttackRepresentationCard v-if="currentAttack" :attack="currentAttack" />
-      <div class="flex items-center gap-1">
+      <div v-if="monsterHasRemainingHealth" class="flex items-center gap-1">
         <Button @click="onChargeAttackClick"> Charge </Button>
         <Button @click="onRandomAttackClick"> Charge/Bite </Button>
         <Button @click="onBiteAttackClick">Bite</Button>
