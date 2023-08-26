@@ -25,7 +25,7 @@ const DECK_SELECTIONS = [
           <span>Set monster health:</span>
           <TheHealthSelection @update:selectedHealth="ui.setMonsterHealth" />
         </label>
-        <div class="flex gap-x-2 justify-around mt-2">
+        <div class="flex flex-col gap-y-2 sm:flex-row sm:gap-x-2 justify-around mt-2">
           <Button
             v-for="selection in DECK_SELECTIONS"
             :key="selection.type"

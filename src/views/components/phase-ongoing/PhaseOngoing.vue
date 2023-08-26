@@ -5,7 +5,7 @@ import PhaseTitle from '../phase-title/PhaseTitle.vue';
 import { useMonsterFightStore } from '@/stores/monster-fight/monster-fight';
 import Button from '@/components/button/Button.vue';
 import TheHealthBar from '@/components/the-health-bar/TheHealthBar.vue';
-import AttackRepresentationCard from './AttackRepresentationCard.vue';
+import TheAttackRepresentation from '@/components/the-attack-representation/TheAttackRepresentation.vue';
 
 const monsterFightStore = useMonsterFightStore();
 const { currentMonsterHealth, currentAttack, monsterLevel, initialMosterHealth } =
@@ -48,12 +48,17 @@ const onRandomAttackClick = () => {
       <span v-if="monsterHasRemainingHealth" class="font-cinzel font-semibold text-xl"
         >Monster Actions</span
       >
-      <AttackRepresentationCard v-if="currentAttack" :attack="currentAttack" />
       <div v-if="monsterHasRemainingHealth" class="flex items-center gap-1">
         <Button @click="onChargeAttackClick"> Charge </Button>
         <Button @click="onRandomAttackClick"> &#10067; </Button>
         <Button @click="onBiteAttackClick">Bite</Button>
       </div>
+      <TheAttackRepresentation
+        v-if="currentAttack"
+        class="bg-gray-200 p-2 w-full text-center rounded-lg my-2"
+        :type:="currentAttack.type"
+        :action="currentAttack.action"
+      />
     </div>
 
     <div
