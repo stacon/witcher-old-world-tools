@@ -61,13 +61,19 @@ export const useMonsterFightStore = defineStore('monsterFight', () => {
     return (state.phase = PHASES.DRIVEN_AWAY);
   };
 
+  const checkIfMonsterIsDefeated = () => {
+    if (currentMonsterHealth.value <= 0) {
+      state.phase = PHASES.WON;
+    }
+  };
+
   const inflictDamageToMonster = (damage) => {
     if (damage >= currentMonsterHealth.value) {
-      state.deck = [];
-      state.phase = PHASES.WON;
-      return;
+      state.deck.splice(0, currentMonsterHealth.value);
+    } else {
+      state.deck.splice(0, damage);
     }
-    state.deck.splice(0, damage);
+    checkIfMonsterIsDefeated();
   };
 
   const monsterAttack = (type) => {

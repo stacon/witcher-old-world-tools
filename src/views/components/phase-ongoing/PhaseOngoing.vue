@@ -44,7 +44,10 @@ const onRandomAttackClick = () => {
       <TheHealthBar :health="currentMonsterHealth" :maxHealth="initialMosterHealth" />
     </div>
 
-    <div class="flex flex-col w-full items-center gap-1 p-2 border-2 border-gray-600 rounded-lg">
+    <div
+      v-if="monsterHasRemainingHealth"
+      class="flex flex-col w-full items-center gap-1 p-2 border-2 border-gray-600 rounded-lg"
+    >
       <span v-if="monsterHasRemainingHealth" class="font-cinzel font-semibold text-xl"
         >Monster Actions</span
       >
