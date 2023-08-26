@@ -22,12 +22,14 @@ const attackAnouncement = computed(() =>
 );
 
 const damageRepresentation = computed(() => {
-  if (typeof props.action.damage === 'number') {
+  if (typeof props.action.damage === 'number' && props.action.damage > 0) {
     return `Take ${props.action.damage} damage`;
   }
   if (typeof props.action.damage === 'string') {
     return `Take damage equal to your ${props.action.damage} skill`;
   }
+
+  return null;
 });
 const trash = computed(() => props.action.trash);
 const discardFromHand = computed(() => props.action.discard);
