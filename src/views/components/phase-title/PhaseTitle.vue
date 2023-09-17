@@ -1,5 +1,5 @@
 <template>
-  <div class="font-cinzel text-xl font-bold">
+  <div class="font-cinzel text-lg font-bold">
     <slot></slot>
   </div>
 </template>
